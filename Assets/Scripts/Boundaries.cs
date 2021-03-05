@@ -32,11 +32,18 @@ public class Boundaries : MonoBehaviour
         objectWidth = collider.bounds.size.x / 2;
 
         // Debug.Log("screen left: " + boundaryLeft);
-        // Debug.Log("screen right: " + boundaryRight);
+        Debug.Log("screen right: " + boundaryRight);
     }
 
     void FixedUpdate(){
-        if(Input.GetMouseButtonDown(0)){
+    
+
+    }
+
+    // Update is called once per frame
+    void LateUpdate()
+    {
+    if(Input.GetMouseButtonDown(0)){
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // Debug.Log(worldPosition);
         }
@@ -46,23 +53,10 @@ public class Boundaries : MonoBehaviour
         if(rb.position.x + objectWidth >= boundaryRight){
                 newPos = new Vector2(boundaryLeft + 0.4f, rb.position.y);
                 rb.MovePosition(newPos);
-                Debug.Log("Collided on Right side of the screen!");
-            // rb.position.x = boundaryLeft + 1;
+
         } else if(rb.position.x - objectWidth <= boundaryLeft) {
                 newPos = new Vector2(boundaryRight - 0.4f, rb.position.y);
-                Debug.Log("Collided on Left side of the screen!");
                 rb.MovePosition(newPos);
-
-                // rb. = boundaryRight - 1;
         }
-
-    }
-
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        // Vector2 viewPos = rb.position;
-        // viewPos.x = Mathf.Clamp(viewPos.x, 0 + objectWidth, screenWidth * - objectWidth);
-        // transform.position = viewPos;
     }
 }
