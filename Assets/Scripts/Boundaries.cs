@@ -14,7 +14,7 @@ public class Boundaries : MonoBehaviour
     private Collider2D collider;
 
     private float objectWidth;
-    private float objectHeight;
+    // private float objectHeight;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class Boundaries : MonoBehaviour
         objectWidth = collider.bounds.size.x / 2;
 
         // Debug.Log("screen left: " + boundaryLeft);
-        Debug.Log("screen right: " + boundaryRight);
+        // Debug.Log("screen right: " + boundaryRight);
     }
 
     void FixedUpdate(){

@@ -56,7 +56,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Boundaries.cs" />
+     <Compile Include="Assets\Scripts\Cactus.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Ivan On Tech Academy/Game/Dodge/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
