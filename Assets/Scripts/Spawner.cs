@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject cactusPrefab;
+
     public float respawnTime = 1.5f;
 
     private Vector2 boundaryLeft;
@@ -13,6 +14,8 @@ public class Spawner : MonoBehaviour
     private Vector3 localScale;
 
     private Vector3 cactusSize;
+
+    private float gapBetweenCactus;
 
     // Start is called before the first frame update
     void Start()
@@ -32,20 +35,26 @@ public class Spawner : MonoBehaviour
         GameObject cactusRight = Instantiate(cactusPrefab) as GameObject;
         cactusSize = cactusRight.GetComponent<Collider2D>().bounds.size;
       
-        localScale =  cactusRight.transform.localScale;
-        localScale.x = 2;
-        cactusRight.transform.localScale = localScale;
-        cactusRight.transform.position = new Vector2(boundaryRight.x - (cactusSize.x), boundaryRight.y);
+        // localScale =  cactusRight.transform.localScale;
+        // localScale.x = 2;
+        // cactusRight.transform.localScale = localScale;
+        cactusRight.transform.position = new Vector2(boundaryRight.x - (cactusSize.x / 2), boundaryRight.y);
+        // cactusRight.transform.position = new Vector2(boundaryRight.x , boundaryRight.y);
+        cactusRight.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
 
         //Left-side cactus
         GameObject cactusLeft = Instantiate(cactusPrefab) as GameObject;
         cactusSize = cactusLeft.GetComponent<Collider2D>().bounds.size;
 
-        localScale.x = 2;
-        cactusLeft.transform.localScale = localScale;
-        cactusLeft.transform.position = new Vector2(boundaryLeft.x + (cactusSize.x), boundaryLeft.y);
+        // localScale.x = 2;
+        // cactusLeft.transform.localScale = localScale;
+        cactusLeft.transform.position = new Vector2(boundaryLeft.x + (cactusSize.x / 2), boundaryLeft.y);
 
+        // cactusLeft.transform.position = new Vector2(boundaryLeft.x, boundaryLeft.y);
+
+
+     
 
         //use Random.Range to determine whether to spawn one cactus or two cactus at the same time
         //{

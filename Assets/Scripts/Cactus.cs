@@ -17,7 +17,7 @@ public class Cactus : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
 
-        rb.velocity = new Vector2(0, -moveSpeed * Time.deltaTime);
+        rb.velocity = new Vector2(0, -moveSpeed);
        
         boundaryBottom = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, Camera.main.transform.position.z)).y;
 

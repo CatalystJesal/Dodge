@@ -54,11 +54,18 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.CompareTag("Wall")){
+        if(other.gameObject.CompareTag("Cactus")){
             rb.velocity = new Vector2(0,0);
             isGameOver = true;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+       if(other.gameObject.CompareTag("ScoreTrigger")){
+            Debug.Log("Triggered!");
+            FindObjectOfType<GameStatus>().AddToScore();
+       }
+   }
 
     // void MovementType1(){
     //  leftClick = Input.GetAxis("Fire1");
