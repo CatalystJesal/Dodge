@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject cactusPrefab;
+    //add all the cactus objects to this list
+    [SerializeField]
+    private List<GameObject> cactusPrefabs;
 
     public float respawnTime = 1.5f;
 
     private Vector2 boundaryLeft;
-    private Vector2 boundaryRight;
+    private Vector2 centreScreen;
 
     private Vector3 localScale;
 
@@ -17,12 +19,14 @@ public class Spawner : MonoBehaviour
 
     private float gapBetweenCactus;
 
+    private int branchToSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
-        boundaryLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, Camera.main.transform.position.z));
+        // boundaryLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, Camera.main.transform.position.z));
      
-        boundaryRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        centreScreen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height, Camera.main.transform.position.z));
 
         // objectWidth = collider.bounds.size.x / 2;
         StartCoroutine(CactusWave());
@@ -30,30 +34,20 @@ public class Spawner : MonoBehaviour
 
     private void SpawnCactus(){
 
-        //Right-side cactus
 
-        GameObject cactusRight = Instantiate(cactusPrefab) as GameObject;
-        cactusSize = cactusRight.GetComponent<Collider2D>().bounds.size;
-      
-        // localScale =  cactusRight.transform.localScale;
-        // localScale.x = 2;
-        // cactusRight.transform.localScale = localScale;
-        cactusRight.transform.position = new Vector2(boundaryRight.x - (cactusSize.x / 2), boundaryRight.y);
-        // cactusRight.transform.position = new Vector2(boundaryRight.x , boundaryRight.y);
-        cactusRight.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        //Use Random.Range to select a number between the first index till the size of the cactusPrefabs list
+        //instantiate that one
 
+        branchToSpawn = Random.Range(0, cactusPrefabs.Count-1);
 
-        //Left-side cactus
-        GameObject cactusLeft = Instantiate(cactusPrefab) as GameObject;
-        cactusSize = cactusLeft.GetComponent<Collider2D>().bounds.size;
-
-        // localScale.x = 2;
-        // cactusLeft.transform.localScale = localScale;
-        cactusLeft.transform.position = new Vector2(boundaryLeft.x + (cactusSize.x / 2), boundaryLeft.y);
-
-        // cactusLeft.transform.position = new Vector2(boundaryLeft.x, boundaryLeft.y);
+        GameObject currentBranch = Instantiate(cactusPrefabs[branchToSpawn]) as GameObject;
+    
+        currentBranch.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+    
 
 
+ 
+    
      
 
         //use Random.Range to determine whether to spawn one cactus or two cactus at the same time

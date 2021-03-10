@@ -61,10 +61,10 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-       if(other.gameObject.CompareTag("ScoreTrigger")){
-            Debug.Log("Triggered!");
-            FindObjectOfType<GameStatus>().AddToScore();
-       }
+    //    if(other.gameObject.CompareTag("ScoreTrigger")){
+    //         Debug.Log("Scored!");
+    //         FindObjectOfType<GameStatus>().AddToScore();
+    //    }
    }
 
     // void MovementType1(){

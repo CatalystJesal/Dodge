@@ -18,5 +18,6 @@ public class GameStatus : MonoBehaviour
 
     public void AddToScore(){
         currentScore += scorePerClear;
+        Debug.Log(currentScore);
     }
 }

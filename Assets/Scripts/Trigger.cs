@@ -13,4 +13,10 @@ public class Trigger : MonoBehaviour
             rb.velocity = new Vector2(0, -moveSpeed);
 
         }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Player")){
+            FindObjectOfType<GameStatus>().AddToScore();
+       }
+   }
 }
