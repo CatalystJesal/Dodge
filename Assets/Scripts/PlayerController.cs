@@ -58,23 +58,9 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Cactus")){
             rb.velocity = new Vector2(0,0);
             FindObjectOfType<GameStatus>().SetGameOver(true);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-       if(other.gameObject.CompareTag("ScoreTrigger")){
+        } else if(other.gameObject.CompareTag("Coin")){
             FindObjectOfType<GameStatus>().AddToScore();
+            Destroy(other.gameObject);
        }
-   }
-
-    // void MovementType1(){
-    //  leftClick = Input.GetAxis("Fire1");
-
-    //    if(leftClick > 0f){
-    //          rb.velocity = new Vector2(leftClick * moveSpeed , rb.velocity.y); 
-    //     } else if(leftClick <= 0f){
-    //          rb.velocity = new Vector2(0, rb.velocity.y);
-    //     }
-    // }
-
+    }
 }

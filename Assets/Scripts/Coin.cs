@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trigger : MonoBehaviour
+public class Coin : MonoBehaviour
 {
 
     //Have the trigger on one of the cactus's instead? Score isn't updating immediately and trigger gets mis-placed elsewhere causing this issue
