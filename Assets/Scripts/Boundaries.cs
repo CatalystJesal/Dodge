@@ -31,8 +31,6 @@ public class Boundaries : MonoBehaviour
         boundaryRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z)).x;
         objectWidth = collider.bounds.size.x / 2;
 
-        // Debug.Log("screen left: " + boundaryLeft);
-        // Debug.Log("screen right: " + boundaryRight);
     }
 
     void FixedUpdate(){
@@ -45,7 +43,6 @@ public class Boundaries : MonoBehaviour
     {
     if(Input.GetMouseButtonDown(0)){
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // Debug.Log(worldPosition);
         }
 
         Vector2 newPos; 

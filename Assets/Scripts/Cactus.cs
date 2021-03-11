@@ -5,23 +5,25 @@ using UnityEngine;
 public class Cactus : MonoBehaviour
 {
 
-    public float moveSpeed;
+    private float moveSpeed;
     private Rigidbody2D rb;
-    private Collider2D collider;
 
-    private float boundaryBottom;
+    private bool isGameOver;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        // collider = GetComponent<Collider2D>();
-
+        moveSpeed = FindObjectOfType<GameStatus>().CactusSpeed();
         rb.velocity = new Vector2(0, -moveSpeed);
-       
-        // boundaryBottom = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, Camera.main.transform.position.z)).y;
+    }
 
-        // Debug.Log("Cactus x coordinate: " + rb.position.x);
+    void FixedUpdate(){
+        isGameOver = FindObjectOfType<GameStatus>().IsGameOver();
+
+        if(isGameOver){
+           rb.velocity = new Vector2(0, 0); 
+        }
 
     }
 

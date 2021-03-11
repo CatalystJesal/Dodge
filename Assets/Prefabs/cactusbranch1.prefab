@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529474476396068731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26, y: 0.44, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.994, y: 0.732, z: 0}
+  m_LocalScale: {x: 2.034688, y: 0.9599, z: 0.9599}
   m_Children: []
   m_Father: {fileID: 7097313562370657288}
   m_RootOrder: 2
@@ -71,7 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c05e707fbc7ea84b88001c328ebcd63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
 --- !u!50 &928369018
 Rigidbody2D:
   serializedVersion: 4
@@ -87,7 +86,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -121,8 +120,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545331902049799273}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 1.42, y: 0.26, z: 0.4248047}
-  m_LocalScale: {x: 0.59701484, y: 0.48210755, z: 0.48210755}
+  m_LocalPosition: {x: 0.961, y: 0.23, z: 0.4248047}
+  m_LocalScale: {x: 0.7521005, y: 0.4273351, z: 0.4273351}
   m_Children: []
   m_Father: {fileID: 7097313562370657288}
   m_RootOrder: 0
@@ -360,7 +359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad1a499bd0ebe94db90748093a067c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
 --- !u!1 &2342445325297454527
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,8 +387,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2342445325297454527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.624, y: 0.252, z: 0.4248047}
-  m_LocalScale: {x: 0.3390189, y: 0.4400731, z: 0.4837523}
+  m_LocalPosition: {x: -2.092, y: 0.23, z: 0.4248047}
+  m_LocalScale: {x: 0.17770351, y: 0.37587965, z: 0.41318738}
   m_Children: []
   m_Father: {fileID: 7097313562370657288}
   m_RootOrder: 1
@@ -628,7 +626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad1a499bd0ebe94db90748093a067c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
 --- !u!1 &7883561508304394613
 GameObject:
   m_ObjectHideFlags: 0

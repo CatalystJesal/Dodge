@@ -21,51 +21,43 @@ public class Spawner : MonoBehaviour
 
     private int branchToSpawn;
 
+    private bool isGameOver;
+
+    private int prevBranchSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
-        // boundaryLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, Camera.main.transform.position.z));
-     
         centreScreen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height, Camera.main.transform.position.z));
 
-        // objectWidth = collider.bounds.size.x / 2;
+        branchToSpawn = Random.Range(0, cactusPrefabs.Count-1);
+
         StartCoroutine(CactusWave());
+    }
+
+    void FixedUpdate() {
+           isGameOver = FindObjectOfType<GameStatus>().IsGameOver();
     }
 
     private void SpawnCactus(){
 
-
-        //Use Random.Range to select a number between the first index till the size of the cactusPrefabs list
-        //instantiate that one
-
-        branchToSpawn = Random.Range(0, cactusPrefabs.Count-1);
-
         GameObject currentBranch = Instantiate(cactusPrefabs[branchToSpawn]) as GameObject;
     
         currentBranch.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-    
+
+        branchToSpawn = Random.Range(0, cactusPrefabs.Count-1);
 
 
- 
-    
-     
-
-        //use Random.Range to determine whether to spawn one cactus or two cactus at the same time
-        //{
-
-        //Have two cactuses spawn at the same time at opposite ends but one of the two cactuses is longer than the other and there's a gap of the same length each time, ensure that the next spawing cactus
-        //is offset from the first one spawned by x-gap
-        //OR
-        //Spawn only one cactus at random (use Random.Range to decide) decide if it's left one or right one, have it take up almost the entire width of the screen with the gap at the end
-
-        //}
     }
 
     IEnumerator CactusWave(){
-        //Instead only spawn new cactus if !GameOver
-        while(true){
+        //Only spawn new cactus if !GameOver
+
+        while(!isGameOver){
             yield return new WaitForSeconds(respawnTime);
             SpawnCactus();
-        }
+        } 
+
+
     }
 }

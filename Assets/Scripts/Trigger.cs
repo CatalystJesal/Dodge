@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
+
+    //Have the trigger on one of the cactus's instead? Score isn't updating immediately and trigger gets mis-placed elsewhere causing this issue
         private Rigidbody2D rb;
-        public float moveSpeed;
+        private float moveSpeed;
+
+        private bool isGameOver;
 
         void Start(){
 
             rb = this.GetComponent<Rigidbody2D>();
+            moveSpeed = FindObjectOfType<GameStatus>().CactusSpeed();
             rb.velocity = new Vector2(0, -moveSpeed);
 
         }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("Player")){
-            FindObjectOfType<GameStatus>().AddToScore();
-       }
-   }
+        void FixedUpdate(){
+            isGameOver = FindObjectOfType<GameStatus>().IsGameOver();
+
+            if(isGameOver){
+                 rb.velocity = new Vector2(0, 0);
+            }
+        }
+
 }

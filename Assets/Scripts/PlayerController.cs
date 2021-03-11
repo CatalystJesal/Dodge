@@ -21,10 +21,11 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         screenWidth = Screen.width;
-        isGameOver = false;
     }
 
     void FixedUpdate() {
+        isGameOver = FindObjectOfType<GameStatus>().IsGameOver();
+
         if(!isGameOver){
             MovementType2();
         }
@@ -56,15 +57,14 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other){
         if(other.gameObject.CompareTag("Cactus")){
             rb.velocity = new Vector2(0,0);
-            isGameOver = true;
+            FindObjectOfType<GameStatus>().SetGameOver(true);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-    //    if(other.gameObject.CompareTag("ScoreTrigger")){
-    //         Debug.Log("Scored!");
-    //         FindObjectOfType<GameStatus>().AddToScore();
-    //    }
+       if(other.gameObject.CompareTag("ScoreTrigger")){
+            FindObjectOfType<GameStatus>().AddToScore();
+       }
    }
 
     // void MovementType1(){
