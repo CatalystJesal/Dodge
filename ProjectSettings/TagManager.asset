@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - background
-  - Wall
+  - Cactus
+  - ScoreTrigger
+  - CactusBranch
+  - Coin
   layers:
   - Default
   - TransparentFX
