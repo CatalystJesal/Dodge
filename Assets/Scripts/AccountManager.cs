@@ -15,6 +15,8 @@ public class AccountManager : MonoBehaviour
 
     public static AccountManager instance;
 
+    private MenuLoader menuLoader;
+
     public User player = null;
 
     public Identity adminIdentity = null;
@@ -36,6 +38,7 @@ public class AccountManager : MonoBehaviour
 
     public int coinBalance;
 
+
     
 
     // Start is called before the first frame update
@@ -45,6 +48,7 @@ public class AccountManager : MonoBehaviour
             instance = this;
         }
 
+        menuLoader = FindObjectOfType<MenuLoader>();
         createAccInfoText.text = "";
         loginAccInfoText.text = "";
         Enjin.SDK.Core.Enjin.StartPlatform(PLATFORM_URL, APP_ID, APP_SECRET);
@@ -125,11 +129,14 @@ public class AccountManager : MonoBehaviour
         Debug.Log(accessToken);
 
 
-        GoToGame();
+        GoToHome();
     }
 
+    private void GoToHome(){
+        menuLoader.GoToHome();
+     }
+
+
     
-    private void GoToGame(){
-        SceneManager.LoadScene("GameScene");
-    }
+
 }

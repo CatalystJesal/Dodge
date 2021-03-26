@@ -5,20 +5,44 @@ using TMPro;
 
 public class GameStatus : MonoBehaviour
 {
-    [SerializeField] int scorePerClear = 1;
-    [SerializeField] int currentScore = 0;
+
+    [SerializeField] 
+    public int scorePerClear = 1;
+    [SerializeField] 
+    public int currentScore = 0;
 
 
-    [SerializeField] bool isGameOver;
+    [SerializeField] 
+    public bool isGameOver;
 
-    [SerializeField] float cactusSpeed;
+    [SerializeField] 
+    public float cactusSpeed;
 
 
     public TextMeshProUGUI scoreText;
 
+
+    void Awake(){
+        SetupSingleton();
+    }
+
+    
+    private void SetupSingleton()
+    {
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Start()
     {
+
         isGameOver = false;
     }
 
@@ -42,6 +66,10 @@ public class GameStatus : MonoBehaviour
             isGameOver = b;
             Debug.Log("GAME OVER");
         }
-       
     }
+
+    public void ResetGame(){
+        Destroy(gameObject);
+    }
+
 }

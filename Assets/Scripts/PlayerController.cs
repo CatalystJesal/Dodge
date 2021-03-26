@@ -16,9 +16,14 @@ public class PlayerController : MonoBehaviour
     private float initialMousePosX;
 
     private bool isGameOver;
+
+    private MenuLoader menuLoader;
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        menuLoader = FindObjectOfType<MenuLoader>();
         rb = GetComponent<Rigidbody2D>();
         screenWidth = Screen.width;
     }
@@ -58,6 +63,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Cactus")){
             rb.velocity = new Vector2(0,0);
             FindObjectOfType<GameStatus>().SetGameOver(true);
+            menuLoader.LoadGameOver();
         } else if(other.gameObject.CompareTag("Coin")){
             FindObjectOfType<GameStatus>().AddToScore();
             Destroy(other.gameObject);

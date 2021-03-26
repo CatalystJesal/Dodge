@@ -16,6 +16,7 @@ public class Cactus : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         moveSpeed = FindObjectOfType<GameStatus>().CactusSpeed();
         rb.velocity = new Vector2(0, -moveSpeed);
+
     }
 
     void FixedUpdate(){
@@ -32,5 +33,6 @@ public class Cactus : MonoBehaviour
         if(other.gameObject.CompareTag("Player")){
             rb.velocity = new Vector2(0,0);
         }
+        
     }
 }
