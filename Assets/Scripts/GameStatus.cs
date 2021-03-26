@@ -9,7 +9,7 @@ public class GameStatus : MonoBehaviour
     [SerializeField] 
     public int scorePerClear = 1;
     [SerializeField] 
-    public int currentScore = 0;
+    public int score = 0;
 
 
     [SerializeField] 
@@ -19,7 +19,7 @@ public class GameStatus : MonoBehaviour
     public float cactusSpeed;
 
 
-    public TextMeshProUGUI scoreText;
+    // public TextMeshProUGUI scoreText;
 
 
     void Awake(){
@@ -46,14 +46,18 @@ public class GameStatus : MonoBehaviour
         isGameOver = false;
     }
 
+    public int GetScore(){
+        return score;
+    }
+
     public float CactusSpeed(){
         return cactusSpeed;
     }
 
 
     public void AddToScore(){
-        currentScore += scorePerClear;
-        scoreText.text = "Score: " + currentScore;
+        score += scorePerClear;
+        // scoreText.text = "Score: " + currentScore;
     }
 
     public bool IsGameOver(){

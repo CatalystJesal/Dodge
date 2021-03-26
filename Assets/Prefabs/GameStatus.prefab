@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scorePerClear: 1
-  currentScore: 0
+  score: 0
   isGameOver: 0
   cactusSpeed: 1.6
-  scoreText: {fileID: 0}

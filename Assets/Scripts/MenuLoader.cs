@@ -8,7 +8,9 @@ public class MenuLoader : MonoBehaviour
     [SerializeField]
     private float delay = 1.0f;
 
+
     public void GoToHome(){
+        FindObjectOfType<GameStatus>().ResetGame();
         SceneManager.LoadScene("MenuScene");
     }
     
