@@ -34,12 +34,7 @@ public class AccountManager : MonoBehaviour
     public GameObject userId;
 
     public Text createAccInfoText;
-    public Text loginAccInfoText;
-
-    public int coinBalance;
-
-
-    
+    public Text loginAccInfoText;  
 
     // Start is called before the first frame update
     void Start()
@@ -85,17 +80,13 @@ public class AccountManager : MonoBehaviour
             loginAccInfoText.text = "The user id in invalid.";
             throw new Exception("There is no account tied to this user id");
         }
-
-        Debug.Log(player.identities.Length);
-        Debug.Log(player.identities[0].linkingCode);
+        
         
         if(player.identities[0].linkingCode != ""){
             loginAccInfoText.text = "The user id has not been activated. Please link the account to your wallet address with Linking Code " + player.identities[0].linkingCode +".";
         } else {
              AuthPlayer(player.name);
         }
-  
-
        
     }
 
@@ -125,12 +116,12 @@ public class AccountManager : MonoBehaviour
      async public void AuthPlayer(string name)
     {
         string accessToken = Enjin.SDK.Core.Enjin.AuthPlayer(name);
-
         Debug.Log(accessToken);
-
 
         GoToHome();
     }
+
+
 
     private void GoToHome(){
         menuLoader.GoToHome();

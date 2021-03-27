@@ -10,8 +10,15 @@ public class MenuLoader : MonoBehaviour
 
 
     public void GoToHome(){
-        FindObjectOfType<GameStatus>().ResetGame();
+        if(SceneManager.GetActiveScene().name == "GameOverScene"){
+            FindObjectOfType<GameStatus>().ResetGame();
+        }
+
         SceneManager.LoadScene("MenuScene");
+    }
+
+    public void GoToStore(){
+        SceneManager.LoadScene("StoreScene");
     }
     
     public void GoToGame(){
