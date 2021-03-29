@@ -814,7 +814,7 @@ PrefabInstance:
     - target: {fileID: 9047256059360948972, guid: 5b71d9b72cc69ee479d83faee1bed333,
         type: 3}
       propertyPath: m_Name
-      value: WalletSynchronizer
+      value: WalletManager
       objectReference: {fileID: 0}
     - target: {fileID: 9047256059360948974, guid: 5b71d9b72cc69ee479d83faee1bed333,
         type: 3}
@@ -873,6 +873,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b71d9b72cc69ee479d83faee1bed333, type: 3}
+--- !u!1 &856935850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 856935852}
+  - component: {fileID: 856935851}
+  m_Layer: 0
+  m_Name: StoreController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &856935851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856935850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0183190f71003d14083691cc9fdb5589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &856935852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856935850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0098808, y: 0.37249777, z: -10.837891}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1014944217 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2029060874932015041, guid: f7fc1a05996505a4ba9be929d7b7a182,
