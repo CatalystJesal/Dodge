@@ -6,27 +6,31 @@ using TMPro;
 public class GameStatus : MonoBehaviour
 {
 
-    [SerializeField] 
+    [SerializeField]
     public int scorePerClear = 1;
-    [SerializeField] 
+    [SerializeField]
     public int score = 0;
 
 
-    [SerializeField] 
+    [SerializeField]
     public bool isGameOver;
 
-    [SerializeField] 
+    [SerializeField]
     public float cactusSpeed;
+
+
+
 
 
     // public TextMeshProUGUI scoreText;
 
 
-    void Awake(){
+    void Awake()
+    {
         SetupSingleton();
     }
 
-    
+
     private void SetupSingleton()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -46,34 +50,43 @@ public class GameStatus : MonoBehaviour
         isGameOver = false;
     }
 
-    public int GetScore(){
+    public int GetScore()
+    {
         return score;
     }
 
-    public float CactusSpeed(){
+    public float CactusSpeed()
+    {
         return cactusSpeed;
     }
 
 
-    public void AddToScore(){
+    public void AddToScore()
+    {
         score += scorePerClear;
         // scoreText.text = "Score: " + currentScore;
     }
 
-    public bool IsGameOver(){
+    public bool IsGameOver()
+    {
         return isGameOver;
     }
 
-    public void SetGameOver(bool b){
+    public void SetGameOver(bool b)
+    {
 
-        if(!isGameOver){
+        if (!isGameOver)
+        {
             isGameOver = b;
             Debug.Log("GAME OVER");
         }
     }
 
-    public void ResetGame(){
+    public void ResetGame()
+    {
         Destroy(gameObject);
     }
+
+
 
 }

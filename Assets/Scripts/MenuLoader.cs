@@ -9,20 +9,26 @@ public class MenuLoader : MonoBehaviour
     private float delay = 1.0f;
 
 
-    public void GoToHome(){
-        if(SceneManager.GetActiveScene().name == "GameOverScene"){
+    public void GoToHome()
+    {
+        if (SceneManager.GetActiveScene().name == "GameOverScene")
+        {
             FindObjectOfType<GameStatus>().ResetGame();
+            FindObjectOfType<SpriteHandler>().Reset();
         }
 
         SceneManager.LoadScene("MenuScene");
     }
 
-    public void GoToStore(){
+    public void GoToStore()
+    {
         SceneManager.LoadScene("StoreScene");
     }
-    
-    public void GoToGame(){
-        if(SceneManager.GetActiveScene().name == "GameOverScene"){
+
+    public void GoToGame()
+    {
+        if (SceneManager.GetActiveScene().name == "GameOverScene")
+        {
             FindObjectOfType<GameStatus>().ResetGame();
         }
 
@@ -34,10 +40,11 @@ public class MenuLoader : MonoBehaviour
         StartCoroutine(WaitAndLoad_GameOver());
     }
 
-    public IEnumerator WaitAndLoad_GameOver(){
+    public IEnumerator WaitAndLoad_GameOver()
+    {
         Debug.Log("Game Over Scene");
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("GameOverScene");
     }
-    
+
 }

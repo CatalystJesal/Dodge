@@ -194,7 +194,6 @@ MonoBehaviour:
   userId: {fileID: 269031441}
   createAccInfoText: {fileID: 553834907}
   loginAccInfoText: {fileID: 1511662510}
-  coinBalance: 0
 --- !u!4 &182107045
 Transform:
   m_ObjectHideFlags: 0

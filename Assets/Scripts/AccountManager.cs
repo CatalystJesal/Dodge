@@ -22,7 +22,7 @@ public class AccountManager : MonoBehaviour
     public Identity adminIdentity = null;
 
     private readonly string PLATFORM_URL = "https://kovan.cloud.enjin.io/";
-    
+
     [SerializeField]
     private int APP_ID;
 
@@ -34,12 +34,13 @@ public class AccountManager : MonoBehaviour
     public GameObject userId;
 
     public Text createAccInfoText;
-    public Text loginAccInfoText;  
+    public Text loginAccInfoText;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(instance == null){
+        if (instance == null)
+        {
             instance = this;
         }
 
@@ -53,67 +54,83 @@ public class AccountManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    async public void LoginAdmin(){
+    async public void LoginAdmin()
+    {
         adminIdentity = Enjin.SDK.Core.Enjin.GetIdentity(10159);
 
+        Debug.Log("The admin has logged into: " + adminIdentity.wallet.ethAddress);
+
+        Debug.Log("App Id: " + Enjin.SDK.Core.Enjin.AppID);
     }
 
-    async public void Login(){
+    async public void Login()
+    {
         loginAccInfoText.text = "";
         int id = Int32.Parse(userId.GetComponent<InputField>().text);
 
         Debug.Log(id);
 
-        try {
+        try
+        {
             player = Enjin.SDK.Core.Enjin.GetUser(id);
 
-        } catch {
+        }
+        catch
+        {
 
             loginAccInfoText.text = "The user id does not exist.";
             throw new Exception("There is no account tied to this user id");
         }
 
-        if(player.identities.Length == 0) {
+        if (player.identities.Length == 0)
+        {
             loginAccInfoText.text = "The user id in invalid.";
             throw new Exception("There is no account tied to this user id");
         }
-        
-        
-        if(player.identities[0].linkingCode != ""){
-            loginAccInfoText.text = "The user id has not been activated. Please link the account to your wallet address with Linking Code " + player.identities[0].linkingCode +".";
-        } else {
-             AuthPlayer(player.name);
+
+
+        if (player.identities[0].linkingCode != "")
+        {
+            loginAccInfoText.text = "The user id has not been activated. Please link the account to your wallet address with Linking Code " + player.identities[0].linkingCode + ".";
         }
-       
+        else
+        {
+            AuthPlayer(player.name);
+        }
+
     }
 
 
-    async public void CreatePlayer(){
+    async public void CreatePlayer()
+    {
 
         createAccInfoText.text = "";
         string name = username.GetComponent<InputField>().text;
 
-        try {
-        player =  Enjin.SDK.Core.Enjin.CreatePlayer(name);
+        try
+        {
+            player = Enjin.SDK.Core.Enjin.CreatePlayer(name);
 
-        Debug.Log("The new User ID: " + player.id);
-        Debug.Log("The new username: " + player.name);
+            Debug.Log("The new User ID: " + player.id);
+            Debug.Log("The new username: " + player.name);
 
 
-        } catch {
+        }
+        catch
+        {
 
             throw new Exception("User already exists, please try a different username");
         }
 
-        createAccInfoText.text = "Account Created! Your Login ID is " + player.id +". " + "Use linking code " + player.identities[0].linkingCode + " to link your wallet address to this id. If you forget your User ID, please contact the game creator.";
+        createAccInfoText.text = "Account Created! Your Login ID is " + player.id + ". " + "Use linking code " + player.identities[0].linkingCode + " to link your wallet address to this id. If you forget your User ID, please contact the game creator.";
 
     }
 
-    
-     async public void AuthPlayer(string name)
+
+    async public void AuthPlayer(string name)
     {
         string accessToken = Enjin.SDK.Core.Enjin.AuthPlayer(name);
         Debug.Log(accessToken);
@@ -123,11 +140,12 @@ public class AccountManager : MonoBehaviour
 
 
 
-    private void GoToHome(){
+    private void GoToHome()
+    {
         menuLoader.GoToHome();
-     }
+    }
 
 
-    
+
 
 }
