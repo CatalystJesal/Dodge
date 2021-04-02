@@ -295,7 +295,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4dfea230a0ac813479dff258cbbb95b9, type: 3}
   deathSkins:
   - {fileID: 21300000, guid: 8eb53ea2a1773af4086e4aa4d0bd95b0, type: 3}
-  - {fileID: 21300000, guid: 8eb53ea2a1773af4086e4aa4d0bd95b0, type: 3}
+  - {fileID: 21300000, guid: b8e64de087a7cf243814874594a8fd67, type: 3}
   - {fileID: 21300000, guid: 8af016a85a918a74b995b8554cf1faef, type: 3}
   - {fileID: 21300000, guid: 0c562f88feda4594580c74ae594ef520, type: 3}
 --- !u!60 &404296784

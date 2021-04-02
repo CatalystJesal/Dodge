@@ -96,7 +96,7 @@ public class StoreController : MonoBehaviour
         Debug.Log("Admin ETH address: " + adminEthAddress);
 
 
-        TokenValueInputData[] sendToken = new TokenValueInputData[] { new TokenValueInputData("1800000000000fa2", null, 1) };
+        TokenValueInputData[] sendToken = new TokenValueInputData[] { new TokenValueInputData("1800000000000fa2", null, 5) };
         TokenValueInputData[] recieveToken = new TokenValueInputData[] { new TokenValueInputData("1800000000000fb5", null, 1) };
 
         Enjin.SDK.Core.Enjin.IsDebugLogActive = true;
@@ -112,6 +112,7 @@ public class StoreController : MonoBehaviour
             Debug.Log("App Id in Complete Trade: " + Enjin.SDK.Core.Enjin.AppID);
 
             tradeIdToComplete = tradeId;
+
         }
         );
 
