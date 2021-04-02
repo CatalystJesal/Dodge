@@ -1,6 +1,6 @@
 # Dodge
 
-A WebGL game created using Unity2D Engine. Player must navigate through gaps without hitting any walls.
+A WebGL game created using Unity2D Engine for the Enjin eco-system. The cat must collect as many coins as possible while avoiding collision into cacti.
 
 Credits:
 
