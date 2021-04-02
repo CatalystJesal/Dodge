@@ -17,7 +17,11 @@ public class MenuLoader : MonoBehaviour
 
         }
 
-        FindObjectOfType<SpriteHandler>().Reset();
+        if (SceneManager.GetActiveScene().name != "LoginScene")
+        {
+            FindObjectOfType<SpriteHandler>().Reset();
+        }
+
         SceneManager.LoadScene("MenuScene");
     }
 
