@@ -14,9 +14,10 @@ public class MenuLoader : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "GameOverScene")
         {
             FindObjectOfType<GameStatus>().ResetGame();
-            FindObjectOfType<SpriteHandler>().Reset();
+
         }
 
+        FindObjectOfType<SpriteHandler>().Reset();
         SceneManager.LoadScene("MenuScene");
     }
 
