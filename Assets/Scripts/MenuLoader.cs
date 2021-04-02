@@ -42,7 +42,7 @@ public class MenuLoader : MonoBehaviour
 
     public IEnumerator WaitAndLoad_GameOver()
     {
-        Debug.Log("Game Over Scene");
+        // Debug.Log("Game Over Scene");
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("GameOverScene");
     }

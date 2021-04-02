@@ -78,7 +78,7 @@ public class GameStatus : MonoBehaviour
         if (!isGameOver)
         {
             isGameOver = b;
-            Debug.Log("GAME OVER");
+            // Debug.Log("GAME OVER");
         }
     }
 

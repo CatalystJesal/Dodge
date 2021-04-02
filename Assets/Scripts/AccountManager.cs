@@ -61,9 +61,9 @@ public class AccountManager : MonoBehaviour
     {
         adminIdentity = Enjin.SDK.Core.Enjin.GetIdentity(10159);
 
-        Debug.Log("The admin has logged into: " + adminIdentity.wallet.ethAddress);
+        // Debug.Log("The admin has logged into: " + adminIdentity.wallet.ethAddress);
 
-        Debug.Log("App Id: " + Enjin.SDK.Core.Enjin.AppID);
+        // Debug.Log("App Id: " + Enjin.SDK.Core.Enjin.AppID);
     }
 
     async public void Login()
@@ -71,7 +71,7 @@ public class AccountManager : MonoBehaviour
         loginAccInfoText.text = "";
         int id = Int32.Parse(userId.GetComponent<InputField>().text);
 
-        Debug.Log(id);
+        // Debug.Log(id);
 
         try
         {
@@ -114,8 +114,8 @@ public class AccountManager : MonoBehaviour
         {
             player = Enjin.SDK.Core.Enjin.CreatePlayer(name);
 
-            Debug.Log("The new User ID: " + player.id);
-            Debug.Log("The new username: " + player.name);
+            // Debug.Log("The new User ID: " + player.id);
+            // Debug.Log("The new username: " + player.name);
 
 
         }
@@ -133,7 +133,7 @@ public class AccountManager : MonoBehaviour
     async public void AuthPlayer(string name)
     {
         string accessToken = Enjin.SDK.Core.Enjin.AuthPlayer(name);
-        Debug.Log(accessToken);
+        // Debug.Log(accessToken);
 
         GoToHome();
     }

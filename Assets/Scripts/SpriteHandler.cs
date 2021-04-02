@@ -43,10 +43,10 @@ public class SpriteHandler : MonoBehaviour
     void Start()
     {
         walletManager = FindObjectOfType<WalletManager>();
-        // ToggleAssetOwnership();
-        pirateCatBtn.interactable = true;
-        blackCatBtn.interactable = true;
-        greenCatBtn.interactable = true;
+        ToggleAssetOwnership();
+        // pirateCatBtn.interactable = true;
+        // blackCatBtn.interactable = true;
+        // greenCatBtn.interactable = true;
     }
 
     public void ToggleAssetOwnership()
@@ -70,28 +70,28 @@ public class SpriteHandler : MonoBehaviour
     {
         activeSkinIndex = 0;
         activeSpriteName = "Default";
-        Debug.Log(activeSkinIndex);
+        // Debug.Log(activeSkinIndex);
     }
 
     public void usePirateCatSkin()
     {
         activeSkinIndex = 1;
         activeSpriteName = "Pirate Cat";
-        Debug.Log(activeSkinIndex);
+        // Debug.Log(activeSkinIndex);
     }
 
     public void useBlackCatSkin()
     {
         activeSkinIndex = 2;
         activeSpriteName = "Black Cat";
-        Debug.Log(activeSkinIndex);
+        // Debug.Log(activeSkinIndex);
     }
 
     public void useGreenCatSkin()
     {
         activeSkinIndex = 3;
         activeSpriteName = "Green Cat";
-        Debug.Log(activeSkinIndex);
+        // Debug.Log(activeSkinIndex);
     }
 
     public int GetActiveSkinIndex()

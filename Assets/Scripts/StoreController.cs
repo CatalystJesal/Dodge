@@ -36,19 +36,19 @@ public class StoreController : MonoBehaviour
     {
         if (walletManager.GetCoinBalance() > pirateCatCost && !pirateCatBtn.interactable)
         {
-            Debug.Log("Enable pirate cat: " + walletManager.GetCoinBalance() + " and cost is " + pirateCatCost);
+            // Debug.Log("Enable pirate cat: " + walletManager.GetCoinBalance() + " and cost is " + pirateCatCost);
             pirateCatBtn.interactable = true;
         }
 
         if (walletManager.GetCoinBalance() > blackCatCost && !blackCatBtn.interactable)
         {
-            Debug.Log("Enable black cat: " + walletManager.GetCoinBalance() + " and cost is " + blackCatCost);
+            // Debug.Log("Enable black cat: " + walletManager.GetCoinBalance() + " and cost is " + blackCatCost);
             blackCatBtn.interactable = true;
         }
 
         if (walletManager.GetCoinBalance() > greenCatCost && !greenCatBtn.interactable)
         {
-            Debug.Log("Enable green cat: " + walletManager.GetCoinBalance() + " and cost is " + greenCatCost);
+            // Debug.Log("Enable green cat: " + walletManager.GetCoinBalance() + " and cost is " + greenCatCost);
             greenCatBtn.interactable = true;
         }
     }
@@ -58,20 +58,20 @@ public class StoreController : MonoBehaviour
     {
         if (tradeIdToComplete != null)
         {
-            //  Debug.Log("TradeIdToComplete: " + tradeIdToComplete);
+            // Debug.Log("TradeIdToComplete: " + tradeIdToComplete);
             // Debug.Log("Admin id: " + adminIdentity.id);
-            Debug.Log("App Id in Complete Trade: " + Enjin.SDK.Core.Enjin.AppID);
+            // Debug.Log("App Id in Complete Trade: " + Enjin.SDK.Core.Enjin.AppID);
 
-            Request completeTradeRequest = Enjin.SDK.Core.Enjin.CompleteTradeRequest(10159, tradeIdToComplete, delegate (RequestEvent re)
+            Request completeTradeRequest = Enjin.SDK.Core.Enjin.CompleteTradeRequest(adminIdentity.id, tradeIdToComplete, delegate (RequestEvent re)
             {
-                Debug.Log("COMPLETE TRADE Callback! " + re.model + " " + re.event_type + " " + re.contract + " " + re.data.param1);
+                // Debug.Log("COMPLETE TRADE Callback! " + re.model + " " + re.event_type + " " + re.contract + " " + re.data.param1);
 
                 walletManager.SynchronizeWalletChanges();
                 InitializeStore();
 
             });
 
-            Debug.Log("Complete trade callback. " + completeTradeRequest.state);
+            // Debug.Log("Complete trade callback. " + completeTradeRequest.state);
             tradeIdToComplete = null;
 
 
@@ -81,42 +81,42 @@ public class StoreController : MonoBehaviour
     async public void PurchasePirateCat()
     {
 
-        pirateCatBtn.interactable = false;
-        blackCatBtn.interactable = false;
-        greenCatBtn.interactable = false;
+        // pirateCatBtn.interactable = false;
+        // blackCatBtn.interactable = false;
+        // greenCatBtn.interactable = false;
 
         string adminEthAddress = adminIdentity.wallet.ethAddress;
 
         int playerIdentityId = AccountManager.instance.player.identities[0].id;
 
-        Debug.Log("Player identity: " + playerIdentityId);
-        Debug.Log("Dodge Coin ID: " + walletManager.GetDodgeCoinId());
-        Debug.Log("Pirate ID: " + walletManager.GetPirateCatId());
+        // Debug.Log("Player identity: " + playerIdentityId);
+        // Debug.Log("Dodge Coin ID: " + walletManager.GetDodgeCoinId());
+        // Debug.Log("Pirate ID: " + walletManager.GetPirateCatId());
 
-        Debug.Log("Admin ETH address: " + adminEthAddress);
+        // Debug.Log("Admin ETH address: " + adminEthAddress);
 
 
-        TokenValueInputData[] sendToken = new TokenValueInputData[] { new TokenValueInputData("1800000000000fa2", null, 5) };
-        TokenValueInputData[] recieveToken = new TokenValueInputData[] { new TokenValueInputData("1800000000000fb5", null, 1) };
+        TokenValueInputData[] sendToken = new TokenValueInputData[] { new TokenValueInputData(walletManager.GetDodgeCoinId(), null, pirateCatCost) };
+        TokenValueInputData[] recieveToken = new TokenValueInputData[] { new TokenValueInputData(walletManager.GetPirateCatId(), null, 1) };
 
         Enjin.SDK.Core.Enjin.IsDebugLogActive = true;
 
-        Request createTradeRequest = Enjin.SDK.Core.Enjin.CreateTradeRequest(10160, sendToken, "0xEEBD38e685673C3a5507972d2c3B2D22A728662D", recieveToken,
+        Request createTradeRequest = Enjin.SDK.Core.Enjin.CreateTradeRequest(playerIdentityId, sendToken, adminEthAddress, recieveToken,
         delegate (RequestEvent re)
         {
             string tradeId = re.data.param1;
 
-            Debug.Log("CREATE TRADE Callback! " + re.model + " " + re.event_type +
-                " " + re.contract + " " + tradeIdToComplete);
+            // Debug.Log("CREATE TRADE Callback! " + re.model + " " + re.event_type +
+            //     " " + re.contract + " " + tradeIdToComplete);
 
-            Debug.Log("App Id in Complete Trade: " + Enjin.SDK.Core.Enjin.AppID);
+            // Debug.Log("App Id in Complete Trade: " + Enjin.SDK.Core.Enjin.AppID);
 
             tradeIdToComplete = tradeId;
 
         }
         );
 
-        Debug.Log("Create trade callback. " + createTradeRequest.state);
+        // Debug.Log("Create trade callback. " + createTradeRequest.state);
 
     }
 
@@ -139,19 +139,25 @@ public class StoreController : MonoBehaviour
         {
 
             tradeIdToComplete = re.data.param1;
-            Debug.Log("CREATE TRADE Callback! " + re.model + " " + re.event_type +
-                " " + re.contract + " " + tradeIdToComplete);
+            // Debug.Log("CREATE TRADE Callback! " + re.model + " " + re.event_type +
+            //     " " + re.contract + " " + tradeIdToComplete);
 
         }
         );
 
-        Debug.Log("Create trade callback. " + createTradeRequest.state);
+        // Debug.Log("Create trade callback. " + createTradeRequest.state);
 
     }
 
 
     async public void PurchaseGreenCat()
     {
+
+        // pirateCatBtn.interactable = false;
+        // blackCatBtn.interactable = false;
+        // greenCatBtn.interactable = false;
+
+
         string adminEthAddress = adminIdentity.wallet.ethAddress;
 
         int playerIdentityId = AccountManager.instance.player.identities[0].id;
@@ -164,17 +170,12 @@ public class StoreController : MonoBehaviour
         {
 
             tradeIdToComplete = re.data.param1;
-            Debug.Log("CREATE TRADE Callback! " + re.model + " " + re.event_type +
-                " " + re.contract + " " + tradeIdToComplete);
-
-            pirateCatBtn.interactable = false;
-            blackCatBtn.interactable = false;
-            greenCatBtn.interactable = false;
-
+            // Debug.Log("CREATE TRADE Callback! " + re.model + " " + re.event_type +
+            //     " " + re.contract + " " + tradeIdToComplete);
         }
         );
 
-        Debug.Log("Create trade callback. " + createTradeRequest.state);
+        // Debug.Log("Create trade callback. " + createTradeRequest.state);
     }
 
 
